@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Chat from "./Chat";
 import * as S from "./styles";
+import { useDispatch, useSelector } from "react-redux";
+import { add } from "../modules/chat";
 
 function Chatting() {
+  const dispatch = useDispatch();
   const [message, setMessage] = useState("");
+  const scrollRef = useRef();
+  const { chat } = useSelector(({ chat }) => ({
+    chat,
+  }));
+
   const onChage = (e) => setMessage(e.target.value);
-  const onSubmit = (e) => {
+
+  const onSubmit = async (e) => {
     e.preventDefault();
+    if (!message.replace(" ", "")) return;
+
+    await dispatch(add({ name: "나의 말", comment: message }));
     setMessage("");
+    scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
   };
+
   return (
     <S.ChattingWrapper>
       <section>
@@ -20,8 +34,10 @@ function Chatting() {
           </h1>
           <p>명령어 ex) 오늘 기분 어때?</p>
         </article>
-        <article className="chat">
-          <Chat name="지민이" comment="안녕하세요!" />
+        <article ref={scrollRef} className="chat">
+          {chat.map((comment, i) => (
+            <Chat key={i} name={comment.name} comment={comment.comment} />
+          ))}
         </article>
         <form onSubmit={onSubmit}>
           <input

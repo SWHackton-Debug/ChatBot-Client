@@ -54,6 +54,11 @@ export const ChattingWrapper = styled.div`
       margin: 50px 0;
     }
 
+    .chat {
+      max-height: 420px;
+      overflow-y: hidden;
+    }
+
     form .input {
       padding: 10px 20px;
       width: 80%;
