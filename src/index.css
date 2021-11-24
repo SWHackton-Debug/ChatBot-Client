@@ -10,3 +10,7 @@
 body {
   background: linear-gradient(90.22deg, #162b75 0.18%, #9e2b85 99.07%);
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

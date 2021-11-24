@@ -56,7 +56,7 @@ export const ChattingWrapper = styled.div`
 
     .chat {
       max-height: 420px;
-      overflow-y: hidden;
+      overflow-y: scroll;
     }
 
     form .input {
