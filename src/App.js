@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import Introduce from "./components/Start";
+import Chatting from "./components/Chatting";
+import Start from "./components/Start";
 
 function App() {
   const [start, setStart] = useState(false);
 
   if (start) {
-    return <></>;
+    return <Chatting />;
   } else {
     return (
       <div className="App">
-        <Introduce setStart={setStart} />
+        <Start setStart={setStart} />
       </div>
     );
   }
