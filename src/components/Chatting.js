@@ -3,13 +3,15 @@ import Chat from "./Chat";
 import * as S from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../modules/chat";
+import LoadingChat from "./LoadingChat";
 
 function Chatting() {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
   const scrollRef = useRef();
-  const { chat } = useSelector(({ chat }) => ({
-    chat,
+  const { chat, loading } = useSelector(({ chat }) => ({
+    chat: chat.data,
+    loading: chat.loading,
   }));
 
   const onChage = (e) => setMessage(e.target.value);
@@ -38,6 +40,7 @@ function Chatting() {
           {chat.map((comment, i) => (
             <Chat key={i} name={comment.name} comment={comment.comment} />
           ))}
+          {loading && <LoadingChat />}
         </article>
         <form onSubmit={onSubmit}>
           <input

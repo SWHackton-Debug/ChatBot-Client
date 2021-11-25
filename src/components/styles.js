@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const BallAni = keyframes`
+  0% {
+    transform: scale(1)
+  }
+  50% {
+    transform: scale(0)
+  }
+  100% {
+    transform: scale(1)
+  }
+`;
 
 export const StartWrapper = styled.div`
   display: flex;
@@ -92,6 +104,7 @@ export const ChatWrapper = styled.div`
     }
   }
   .comment {
+    display: flex;
     margin-top: 10px;
     background: linear-gradient(
       ${(props) =>
@@ -102,5 +115,25 @@ export const ChatWrapper = styled.div`
     box-shadow: 0px 4px 10px rgba(74, 74, 74, 0.25);
     border-radius: 25px;
     padding: 10px 20px;
+
+    .dot1 {
+      animation: ${BallAni} 1s infinite linear alternate;
+    }
+    .dot2 {
+      animation: ${BallAni} 1s infinite linear alternate;
+      animation-delay: 0.4s;
+    }
+    .dot3 {
+      animation: ${BallAni} 1s infinite linear alternate;
+      animation-delay: 0.7s;
+    }
   }
+`;
+
+export const Dot = styled.div`
+  width: 5px;
+  height: 5px;
+  background: #ffffff;
+  border-radius: 100px;
+  margin-right: 5px;
 `;
