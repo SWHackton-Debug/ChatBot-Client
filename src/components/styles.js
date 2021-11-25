@@ -44,6 +44,11 @@ export const StartWrapper = styled.div`
       background-color: #2e5af7;
     }
   }
+
+  img {
+    width: 400px;
+    height: 400px;
+  }
 `;
 
 export const ChattingWrapper = styled.div`

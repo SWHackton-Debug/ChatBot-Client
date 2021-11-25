@@ -7,7 +7,7 @@ function* SendMessageSaga(action) {
     yield put(start());
     const res = yield call(send, action.payload.comment);
     yield put(add_counsel(res.data));
-    // yield put(finish());
+    yield put(finish());
   } catch (e) {
     yield put(error(e.response));
   }
