@@ -136,6 +136,7 @@ export const ChatWrapper = styled.div`
 `;
 
 export const Dot = styled.div`
+  margin: 9.5px 0;
   width: 5px;
   height: 5px;
   background: #ffffff;
